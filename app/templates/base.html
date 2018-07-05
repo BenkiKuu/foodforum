@@ -38,17 +38,23 @@
                   Post New Recipe
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="nav-item nav-link" href="{{ url_for('main.new_breakfast') }}">New Post</a>
-                  <a class="nav-item nav-link" href="{{ url_for('main.new_product') }}">New Product Pitch</a>
-                  <a class="nav-item nav-link" href="{{ url_for('main.new_pickup') }}">New Pick Up Line</a>
-                  <a class="nav-item nav-link" href="{{ url_for('main.account') }}">Account</a>
-                  <a class="nav-item nav-link" href="{{ url_for('main.logout') }}">Logout</a>
+                  <a class="dropdown-item" href="{{ url_for('main.new_breakfast') }}">New Breafast Recipe</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{{ url_for('main.new_lunch') }}">New Lunch Recipe</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{{ url_for('main.new_dinner') }}">New Dinner Recipe</a>
                 </div>
               </li>
+                  <a class="nav-item nav-link" href="{{ url_for('main.account') }}">Account</a>
+                  <a class="nav-item nav-link" href="{{ url_for('main.logout') }}">Logout</a>
             {% else %}
               <a class="nav-item nav-link" href="{{ url_for('main.login') }}">Login</a>
               <a class="nav-item nav-link" href="{{ url_for('main.register') }}">Register</a>
             {% endif %}
+            <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>
+    </form>
           </div>
         </div>
       </div>
