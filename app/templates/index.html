@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>THE FOOD FORUM</h1>
+
+      <article class="media content-section">
+        <div class="media-body">
+          <h2><a class="article-title" href="{{url_for('main.breakfast_home')}}">BREAKFAST RECIPES</a></h2>
+          <h5 class="article-content">If its unique, if its common,<br>As long as you can have it before noon<br>Show me how to put it in my spoon.</h5>
+          </div>
+      </article>
+      <article class="media content-section">
+        <div class="media-body">
+          <h2><a class="article-title" href="{{url_for('main.lunch_home')}}">LUNCH RECIPES</a></h2>
+          <h5 class="article-content">Wether tasty or not<br>Mix sweet and sour, or savoury<br>I want to know how to cook it so please show me</h5>
+          </div>
+      </article>
+      <article class="media content-section">
+        <div class="media-body">
+          <h2><a class="article-title" href="{{url_for('main.dinner_home')}}">DINNER RECIPE</a></h2>
+          <h5 class="article-content">Make it light<br>or<br>Qick to whip up<br>And show me how to have it right</h5>
+          </div>
+      </article>
+
+{% endblock content %}
+
+
+<!-- <h2><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
+<p class="article-content">{{ post.content }}</p>
+</div> -->
