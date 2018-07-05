@@ -20,7 +20,7 @@ class User(db.Model, UserMixin):
     dinner = db.relationship('Dinner', backref='author', lazy=True)
     dinnercomments = db.relationship('CommentsDinner', backref='author', lazy=True)
     lunch = db.relationship('Lunch', backref='author', lazy=True)
-    lunchcomments = db.relationship('LunchsProduct', backref='author', lazy=True)
+    lunchcomments = db.relationship('CommentsLunch', backref='author', lazy=True)
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
