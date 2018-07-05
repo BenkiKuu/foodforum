@@ -30,7 +30,7 @@ def breakfast_home():
 @main.route('/lunch_home')
 def lunch_home():
     lunchs = Lunch.query.all()
-    return render_template('product_home.html', products=products)
+    return render_template('lunch_home.html', lunchs=lunchs)
 
 @main.route('/dinner_home')
 def dinner_home():
@@ -161,7 +161,7 @@ def delete_breakfast(breakfast_id):
     for comment in breakfast.comments.all():
         db.session.delete(comment)
         db.session.commit()
-    if post.author != current_user:
+    if breakfast.author != current_user:
         abort(403)
     db.session.delete(breakfast)
     db.session.commit()
