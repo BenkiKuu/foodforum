@@ -1,11 +1,32 @@
-body {
+article {
+  border: 1px solid;
+    padding: 30px;
+    box-shadow: 5px 10px #888888;
+}
+
+article:nth-child(3n-1) {
+  background: #C70039;
+}
+
+article:nth-child(3n-2) {
+  background: #FF5733;
+}
+
+article:nth-child(3n) {
+  background: #900C3F;
+}
+
+
+
+
+ body {
   background: #fafafa;
   color: #333333;
   margin-top: 5rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #444444;
+  color: #FFFFFF;
 }
 
 .bg-steel {
@@ -33,7 +54,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .article-title {
-  color: #444444;
+  color: #000000;
 }
 
 a.article-title:hover {
