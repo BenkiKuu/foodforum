@@ -5,7 +5,7 @@ class Config:
     """
     General configuration parent class
     """
-    SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://username:password@localhost/foodforum'
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
     SECRET_KEY=os.environ.get('SECRET_KEY')
 
