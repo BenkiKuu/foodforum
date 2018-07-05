@@ -34,7 +34,7 @@ def lunch_home():
 
 @main.route('/dinner_home')
 def dinner_home():
-    dinnerss = Dinner.query.all()
+    dinners = Dinner.query.all()
     return render_template('dinner_home.html', dinners=dinners)
 
 @main.route('/register', methods=['GET','POST'])
@@ -210,8 +210,8 @@ def update_lunch(lunch_id):
         flash('Your Product Pitch has been updated!', 'success')
         return redirect(url_for('main.lunch', lunch_id=lunch.id))
     elif request.method == 'GET':
-        form.title.data = product.title
-        form.content.data = product.content
+        form.title.data = lunch.title
+        form.content.data = lunch.content
     return render_template('create_lunch.html', title='Update Lunch Recipe', form=form, legend='Update Recipe')
 
 @main.route('/lunch/<int:lunch_id>/delete', methods=['GET','POST'])
@@ -277,7 +277,7 @@ def update_dinner(dinner_id):
 @login_required
 def delete_dinner(dinner_id):
     dinner = Dinner.query.get_or_404(dinner_id)
-    for comment in pickup.comments.all():
+    for comment in dinner.comments.all():
         db.session.delete(comment)
         db.session.commit()
     if dinner.author != current_user:

@@ -42,7 +42,7 @@ class CommentsBreakfast(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.String(255))
     date_posted = db.Column(db.DateTime(250), nullable=False, default=datetime.utcnow)
-    post_id = db.Column(db.Integer, db.ForeignKey("breakfast.id"), nullable=False)
+    breakfast_id = db.Column(db.Integer, db.ForeignKey("breakfast.id"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
     def __repr__(self):
@@ -62,7 +62,7 @@ class CommentsDinner(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.String(255))
     date_posted = db.Column(db.DateTime(250), nullable=False, default=datetime.utcnow)
-    pickup_id = db.Column(db.Integer, db.ForeignKey("dinner.id"), nullable=False)
+    dinner_id = db.Column(db.Integer, db.ForeignKey("dinner.id"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
     def __repr__(self):
@@ -83,7 +83,7 @@ class CommentsLunch(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.String(255))
     date_posted = db.Column(db.DateTime(250), nullable=False, default=datetime.utcnow)
-    product_id = db.Column(db.Integer, db.ForeignKey("lunch.id"), nullable=False)
+    lunch_id = db.Column(db.Integer, db.ForeignKey("lunch.id"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
     def __repr__(self):
