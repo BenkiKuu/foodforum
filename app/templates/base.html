@@ -8,14 +8,12 @@
 
   <!-- Bootstrap CSS -->
   {% block styles %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" type='text/css' href="{{ url_for('static', filename='index.css') }}">
-  {% endblock %}
-  {% if title %}
-    <title>Food Forum - {{title}}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel="stylesheet" type='text/css' href="{{ url_for('static', filename='index.css') }}"> {% endblock %} {% if title %}
+  <title>Food Forum - {{title}}</title>
 
   {% else %}
-    <title>Food Forum</title>
+  <title>Food Forum</title>
   {% endif %}
 </head>
 
@@ -47,28 +45,30 @@
               </div>
             </li>
             {% if current_user.is_authenticated %}
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Post New Recipe
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ url_for('main.new_breakfast') }}">New Breafast Recipe</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{ url_for('main.new_lunch') }}">New Lunch Recipe</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{ url_for('main.new_dinner') }}">New Dinner Recipe</a>
-                </div>
-              </li>
-                  <a class="nav-item nav-link" href="{{ url_for('main.account') }}">Account</a>
-                  <a class="nav-item nav-link" href="{{ url_for('main.logout') }}">Logout</a>
-            {% else %}
-              <a class="nav-item nav-link" href="{{ url_for('main.login') }}">Login</a>
-              <a class="nav-item nav-link" href="{{ url_for('main.register') }}">Register</a>
-            {% endif %}
-            <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ url_for('main.new_breakfast') }}">New Breafast Recipe</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ url_for('main.new_lunch') }}">New Lunch Recipe</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ url_for('main.new_dinner') }}">New Dinner Recipe</a>
+              </div>
+            </li>
+            <a class="nav-item nav-link" href="{{ url_for('main.account') }}">Account</a>
+            <a class="nav-item nav-link" href="{{ url_for('main.logout') }}">Logout</a> {% else %}
+            <a class="nav-item nav-link" href="{{ url_for('main.login') }}">Login</a>
+            <a class="nav-item nav-link" href="{{ url_for('main.register') }}">Register</a> {% endif %}
+            <form class="form-inline my-2 my-lg-0" action="/searc">
+              <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Type Search" aria-label="Search">
+              <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <!-- <form action='/search'>
+	<input name='keyword' placeholder='Type search'>
+</form>
+''' -->
           </div>
         </div>
       </div>
@@ -78,16 +78,11 @@
   <main role="main" class="container">
     <div class="row">
       <div class="col-md-8">
-        {% with messeges = get_flashed_messages(with_categories=true)%}
-          {% if messeges %}
-            {% for category, messege in messeges %}
-              <div class="alert alert-{{'category'}}">
-                {{ message }}
-              </div>
-            {% endfor %}
-          {% endif %}
-        {% endwith %}
-        {% block content %}{% endblock %}
+        {% with messeges = get_flashed_messages(with_categories=true)%} {% if messeges %} {% for category, messege in messeges %}
+        <div class="alert alert-{{'category'}}">
+          {{ message }}
+        </div>
+        {% endfor %} {% endif %} {% endwith %} {% block content %}{% endblock %}
       </div>
 
     </div>

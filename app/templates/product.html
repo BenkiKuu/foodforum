@@ -10,8 +10,8 @@
             <small class="text-muted">{{ lunch.date_posted.strftime('%Y-%m-%d') }}</small>
             {% if lunch.author == current_user %}
               <div class="">
-                <a class="btn btn-secondary btn-sm m-1" href="{{ url_for('main.update_lunch', lunch_id=lunch.id) }}">Update</a>
-                <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                <a class="btn btn-outline-secondary btn-sm m-1" href="{{ url_for('main.update_lunch', lunch_id=lunch.id) }}">Update</a>
+                <button type="button" class="btn btn-outline-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
               </div>
             {% endif %}
           </div>
@@ -45,9 +45,9 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
         <form action="{{ url_for('main.delete_lunch', lunch_id=lunch.id) }}" method="post">
-          <input class="btn btn-danger" type="submit" value="Delete">
+          <input class="btn btn-outline-danger" type="submit" value="Delete">
         </form>
 
       </div>

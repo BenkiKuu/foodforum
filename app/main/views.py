@@ -37,6 +37,19 @@ def dinner_home():
     dinners = Dinner.query.all()
     return render_template('dinner_home.html', dinners=dinners)
 
+def search():
+	#format the searchstring with wildcards, don't worry about this
+	searchstr="%{}%".format(request.form['keyword'])
+	#search in each category
+	dinnerresults=Dinner.query.filter(Dinner.Title.like(searchstr)).all()
+	lunchresults=Lunch.query.filter(Lunch.Title.like(searchstr)).all()
+	breakfastresults=Breakfast.query.filter(Breakfast.Title.like(searchstr)).all()
+	#Add the results
+	results = breakfastresults + lunchresults + dinnerresults
+	#Return the results
+	return render_template('search.html',results=results)
+
+
 @main.route('/register', methods=['GET','POST'])
 def register():
     if current_user.is_authenticated:
