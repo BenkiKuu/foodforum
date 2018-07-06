@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for result in results %}
+  <article class="media content-section">
+    <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + result.author.image_file) }}">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="#">{{ result.author.username }}</a>
+        <small class="text-muted">{{ result.date_posted.strftime('%Y-%m-%d') }}</small>
+      </div>
+      {% if type(result).__name__=='Lunch' %}
+      <h2><a class="article-title" href="{{ url_for('main.lunch', lunch_id=result.id) }}">{{ result.title }}</a></h2>
+      {% elif type(result).__name__=='Breakfast' %}
+      <h2><a class="article-title" href="{{ url_for('main.breakfast', breakfast_id=result.id) }}">{{ result.title }}</a></h2>
+      {% else %}
+      <h2><a class="article-title" href="{{ url_for('main.dinner', dinner_id=result.id) }}">{{ result.title }}</a></h2>
+      {% endif %}
+      <p class="article-content">{{ result.content }}</p>
+    </div>
+  </article>
+{% endfor %}
+
+{% endblock content %}

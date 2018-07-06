@@ -37,17 +37,18 @@ def dinner_home():
     dinners = Dinner.query.all()
     return render_template('dinner_home.html', dinners=dinners)
 
+@main.route('/search')
 def search():
 	#format the searchstring with wildcards, don't worry about this
-	searchstr="%{}%".format(request.form['keyword'])
+	searchstr="%{}%".format(request.args['keyword'])
 	#search in each category
-	dinnerresults=Dinner.query.filter(Dinner.Title.like(searchstr)).all()
-	lunchresults=Lunch.query.filter(Lunch.Title.like(searchstr)).all()
-	breakfastresults=Breakfast.query.filter(Breakfast.Title.like(searchstr)).all()
+	dinnerresults=Dinner.query.filter(Dinner.title.like(searchstr)).all()
+	lunchresults=Lunch.query.filter(Lunch.title.like(searchstr)).all()
+	breakfastresults=Breakfast.query.filter(Breakfast.title.like(searchstr)).all()
 	#Add the results
 	results = breakfastresults + lunchresults + dinnerresults
 	#Return the results
-	return render_template('search.html',results=results)
+	return render_template('search.html',results=results,type=type)
 
 
 @main.route('/register', methods=['GET','POST'])
